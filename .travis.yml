@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+services:
+- postgresql
+before_script:
+- psql -c 'create database twocents_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: fv5AyvuVRWDMkwPL1sBbgb9jqIK/NP7O1azeCJ5GWGflcDPI63B4FUP8PjJQmswugyqETHQZ97urM2iItuqSZIFYLDk9ZfEp4Xmr59K6koQXKrc/zRMBIUtOfl9KxOdb2CbUc5Wt5OCVQzDDQpLLwAHXfg8+6xSCx5zanc6WKblMOmXWESOk5VQYsXdxwBUNW6m3sQRUwn5WWTA1c9T8WmEoeF/F74Svygg5UbFdzKH7iH66A0mY0Ss1UiLgIBErB70HObr4dxqv6AqvsH9UWFHTJmHmR6jtr/SsSLSO5zI/PdO6eP/F1j1pQ0dSuLsIpEVEXsT8cYqP2/a8aWlDelo4cCFO1kj1X1A1MqfZ8Busxvcc7PZhG1DAtCTgzoB5rxNVagGFlPekv44Xf/KDYwZFJmfND+OO8e8AP+ZACxXxZZdLrhaMQMRsmw/vVAzBZkH9/7hMz3nh5e/8YFGVPos5IyPHVQSDtiSZDzCmVwJD6xdCxIwTLp3k93HA4Y3Jr7IIzpv4Yej+l0Pol5eCa8reu5Y9wHgDQZK3Mwt5piu3Mbf010MUYsaAwQ3tok2JULgwlDwsswc6QRHCYP80Fq+2sgVxOFX9VTTXddjOmV/EmR3ySB5zT5BNcfJAaZl1QyIlUjp+RQEG+SLtMP0yPq0L3v7wQNbDgWSSvoLICos=
+  app: twocents-be
+  on:
+    repo: m-mrcr/twocents-be

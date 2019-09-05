@@ -5,7 +5,7 @@ var Sequelize = require('sequelize')
 var Op = Sequelize.Op
 var defaultHeader = ["Content-Type", "application/json"]
 
-router.get('/', async function(req, res) {
+router.get('/recommendations_search', async function(req, res) {
   var query = req.query.q
   try {
     let locations = await Location.findAll({

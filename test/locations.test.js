@@ -19,7 +19,7 @@ describe('Location', () => {
 
   it('GET request for all locations formatted for search results', () => {
     return request(app)
-    .get('/api/v1/recommendations?q=coffee')
+    .get('/api/v1/search/recommendations_search?q=coffee')
     .then(response => {
       expect(response.statusCode).toBe(200)
       console.log(response.body)

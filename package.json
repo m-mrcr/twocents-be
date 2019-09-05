@@ -7,6 +7,11 @@
     "test": "jest --coverage --runInBand --forceExit",
     "heroku-postbuild": "npm install --production"
   },
+  "jest": {
+    "maxConcurrency": 1,
+    "globalSetup": "./test/helper/testGlobalSetup.js",
+    "globalTeardown": "./test/helper/testGlobalTeardown.js"
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

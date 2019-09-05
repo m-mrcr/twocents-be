@@ -22,7 +22,10 @@ describe('Location', () => {
     .get('/api/v1/search/recommendations_search?q=coffee')
     .then(response => {
       expect(response.statusCode).toBe(200)
-      console.log(response.body)
+      expect(response.body[0].id).toBe(1)
+      expect(response.body[0].name).toBe('Little Owl Coffee')
+      expect(response.body[1].id).toBe(5)
+      expect(response.body[1].name).toBe('Crema Coffee House')
     })
   })
 

@@ -23,7 +23,7 @@ describe('Search', () => {
     })
   })
 
-  fit('GET request for all yelp search results formatted for search page - LOCATION', () => {
+  it('GET request for all yelp search results formatted for search page - LOCATION', () => {
     return request(app)
     .get('/api/v1/search/yelp_search?term=coffee&location=80202')
     .then(response => {
@@ -34,7 +34,7 @@ describe('Search', () => {
     })
   })
 
-  fit('GET request for all yelp search results formatted for search page - LAT/LONG', () => {
+  it('GET request for all yelp search results formatted for search page - LAT/LONG', () => {
     return request(app)
     .get('/api/v1/search/yelp_search?term=coffee&latitude=39.7508006&longitude=-104.9965947')
     .then(response => {

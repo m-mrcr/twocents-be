@@ -36,7 +36,7 @@ router.get('/yelp_search', async function(req, res) {
 
     if(term) {
       if(latitude && longitude) {
-        let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}`, { method: 'GET', headers: headers})
+        let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}&limit=10`, { method: 'GET', headers: headers})
           .then(function(response) {
             return response.json();
           })
@@ -45,7 +45,7 @@ router.get('/yelp_search', async function(req, res) {
           })
         res.status(200).send(JSON.stringify(results));
       } else if(location) {
-          let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`, {method: 'GET', headers: headers})
+          let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&limit=10`, {method: 'GET', headers: headers})
             .then(function(response) {
               return response.json();
             })

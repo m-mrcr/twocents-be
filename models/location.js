@@ -6,11 +6,12 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.TEXT,
     phone: DataTypes.STRING,
     rating: DataTypes.FLOAT,
-    review_count: DataTypes.INTEGER,
+    reviewCount: DataTypes.INTEGER,
     categories: DataTypes.ARRAY(DataTypes.STRING),
     location: DataTypes.ARRAY(DataTypes.STRING),
     price: DataTypes.STRING,
-    hours: DataTypes.ARRAY(DataTypes.STRING)
+    hours: DataTypes.ARRAY(DataTypes.STRING),
+    yelpId: DataTypes.STRING
   }, {});
   Location.associate = function(models) {
     // associations can be defined here

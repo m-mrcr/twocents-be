@@ -23,7 +23,7 @@ module.exports = {
       rating: {
         type: Sequelize.FLOAT
       },
-      review_count: {
+      reviewCount: {
         type: Sequelize.INTEGER
       },
       categories: {
@@ -37,6 +37,9 @@ module.exports = {
       },
       hours: {
         type: Sequelize.ARRAY(Sequelize.STRING)
+      },
+      yelpId: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

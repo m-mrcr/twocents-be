@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Location = require('../../../models').Location;
+const fetch = require('node-fetch')
 var Sequelize = require('sequelize')
 var Op = Sequelize.Op
 var defaultHeader = ["Content-Type", "application/json"]
@@ -26,25 +27,51 @@ router.get('/recommendations_search', async function(req, res) {
 
 router.get('/yelp_search', async function(req, res) {
   try {
-    let term = await req.query.term;
-    let latitude = await req.query.latitude;
-    let longitude = await req.query.longitude;
-    let location = await req.query.location;
+    let term = req.query.term;
+    let latitude = req.query.latitude;
+    let longitude = req.query.longitude;
+    let location = req.query.location;
+    let headers = {"Authorization": `Bearer ${process.env.YELP_API_KEY}`}
+
     if(typeof(term) === 'undefined') {
       HandleError();
     } else {
       if(typeof(latitude) !== 'undefined' && typeof(longitude) !== 'undefined') {
-        let results = fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}`, {compress: true, headers: {"Accept-Encoding": "json", "Authorization":`Bearer ${process.env.YELP_API_KEY}`}})
+        let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}`, { method: 'GET', headers: headers})
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            return JSON.stringify(json)
+          })
+          .catch(function(error){
+            return error
+          })
+        res.setHeader(...defaultHeader);
+        res.status(200).send(JSON.stringify(results));
       } else if(typeof(location) !== 'undefined') {
-        let results = fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`, {compress: true, headers: {"Accept-Encoding": "gzip", "Authorization":`Bearer ${process.env.YELP_API_KEY}`}})
+          let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`, {method: 'GET', headers: headers})
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(json) {
+              return JSON.stringify(json)
+            })
+            .catch(function(error){
+              return error
+            })
+          res.setHeader(...defaultHeader);
+          res.status(200).send(JSON.stringify(results));
+        } else {
+          HandleError();
+        }
       }
+    } catch (error) {
+      res.setHeader(...defaultHeader);
+      res.status(500).send({ error })
     }
-    res.setHeader(...defaultHeader);
-    res.status(200).send(JSON.stringify(results));
-  } catch (error) {
-    res.setHeader(...defaultHeader);
-    res.status(500).send({ error })
   }
-});
+);
+
 
 module.exports = router;

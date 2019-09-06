@@ -41,9 +41,6 @@ router.get('/yelp_search', async function(req, res) {
           .then(function(response) {
             return response.json();
           })
-          .then(function(json) {
-            return JSON.stringify(json)
-          })
           .catch(function(error){
             return error
           })
@@ -53,9 +50,6 @@ router.get('/yelp_search', async function(req, res) {
           let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`, {method: 'GET', headers: headers})
             .then(function(response) {
               return response.json();
-            })
-            .then(function(json) {
-              return JSON.stringify(json)
             })
             .catch(function(error){
               return error
@@ -72,6 +66,5 @@ router.get('/yelp_search', async function(req, res) {
     }
   }
 );
-
 
 module.exports = router;

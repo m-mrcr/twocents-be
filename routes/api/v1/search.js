@@ -32,11 +32,10 @@ router.get('/yelp_search', async function(req, res) {
     let longitude = req.query.longitude;
     let location = req.query.location;
     let headers = {"Authorization": `Bearer ${process.env.YELP_API_KEY}`}
+    res.setHeader(...defaultHeader);
 
-    if(typeof(term) === 'undefined') {
-      HandleError();
-    } else {
-      if(typeof(latitude) !== 'undefined' && typeof(longitude) !== 'undefined') {
+    if(term) {
+      if(latitude && longitude) {
         let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&latitude=${latitude}&longitude=${longitude}`, { method: 'GET', headers: headers})
           .then(function(response) {
             return response.json();
@@ -44,9 +43,8 @@ router.get('/yelp_search', async function(req, res) {
           .catch(function(error){
             return error
           })
-        res.setHeader(...defaultHeader);
         res.status(200).send(JSON.stringify(results));
-      } else if(typeof(location) !== 'undefined') {
+      } else if(location) {
           let results = await fetch(`https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}`, {method: 'GET', headers: headers})
             .then(function(response) {
               return response.json();
@@ -54,14 +52,14 @@ router.get('/yelp_search', async function(req, res) {
             .catch(function(error){
               return error
             })
-          res.setHeader(...defaultHeader);
           res.status(200).send(JSON.stringify(results));
         } else {
           HandleError();
         }
+      } else {
+        HandleError();
       }
     } catch (error) {
-      res.setHeader(...defaultHeader);
       res.status(500).send({ error })
     }
   }

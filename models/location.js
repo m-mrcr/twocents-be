@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.FLOAT,
     reviewCount: DataTypes.INTEGER,
     categories: DataTypes.ARRAY(DataTypes.STRING),
+    coordinates: DataTypes.ARRAY(DataTypes.FLOAT),
     location: DataTypes.ARRAY(DataTypes.STRING),
     price: DataTypes.STRING,
     hours: DataTypes.ARRAY(DataTypes.STRING),

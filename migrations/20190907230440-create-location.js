@@ -29,6 +29,9 @@ module.exports = {
       categories: {
         type: Sequelize.ARRAY(Sequelize.STRING)
       },
+      coordinates: {
+        type: Sequelize.ARRAY(Sequelize.FLOAT)
+      },
       location: {
         type: Sequelize.ARRAY(Sequelize.STRING)
       },

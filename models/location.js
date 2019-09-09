@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     yelpId: DataTypes.STRING
   }, {});
   Location.associate = function(models) {
-    // associations can be defined here
+    Location.belongsToMany(models.User, {
+      through: 'UserLocations',
+      as: 'users',
+      foreignKey: 'locationId'
+    });
   };
   return Location;
 };

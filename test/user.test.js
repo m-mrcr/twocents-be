@@ -11,10 +11,11 @@ describe('User', () => {
     cleanup()
   });
 
-  it('GET request for user login', () => {
+  fit('GET request for user login', () => {
     return request(app)
-    .get('/api/v1/users/login?email=kyle@example.com')
+    .get('/api/v1/users/login?p=108443533200110515478')
     .then(response => {
+      console.log(response.body)
       expect(response.statusCode).toBe(200)
       expect(Object.keys(response.body[0])).toContain('id')
       expect(Object.keys(response.body[0])).toContain('name')

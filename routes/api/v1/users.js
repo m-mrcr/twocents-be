@@ -11,29 +11,44 @@ var defaultHeader = ["Content-Type", "application/json"]
 require('dotenv').config();
 
 router.get('/login', async function(req, res) {
-  var encrypted = encrypt(req.query.p)
+  var encryptedKey = encrypt(req.query.p)
   try {
-    let user = await User.findOne({ where: { key: encrypted }});
+    let user = await User.findOne({ where: { key: encryptedKey },
+      include: [
+        {
+          model: Location,
+          as: 'locations',
+          through: { attributes: [] },
+        },
+      ],
+    });
+    res.setHeader(...defaultHeader);
     res.status(200).send(JSON.stringify(user));
   } catch (error) {
-    console.log(error)
+    res.setHeader(...defaultHeader);
     res.status(500).send({ error })
   }
 });
 
-// router.get('/signup', async function(req, res) {
-//   var encrypted = encrypt(req.query.p)
-//   try {
-//     let user = await User.findOrCreate({
-//       where: {
-//         key: encrypted
-//       }
-//     });
-//     res.status(200).send(JSON.stringify(user));
-//   } catch (error) {
-//     res.status(500).send({ error })
-//   }
-// });
+router.get('/signup', async function(req, res) {
+  var encryptedKey = encrypt(req.query.p)
+  try {
+    let user = await User.findOrCreate({ where: { key: encryptedKey },
+      include: [
+        {
+          model: Location,
+          as: 'locations',
+          through: { attributes: [] },
+        },
+      ],
+    });
+    res.setHeader(...defaultHeader);
+    res.status(200).send(JSON.stringify(user));
+  } catch (error) {
+    res.setHeader(...defaultHeader);
+    res.status(500).send({ error })
+  }
+});
 
 function encrypt(input) {
   return crypto.createHmac('sha256', process.env.APP_SECRET)

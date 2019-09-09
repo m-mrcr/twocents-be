@@ -44,4 +44,15 @@ describe('Search', () => {
       expect(Object.keys(response.body.businesses[0])).toContain('name')
     })
   })
+
+  it('GET request for single yelp search result', () => {
+    return request(app)
+    .get('/api/v1/search/yelp_search?term=coffee&latitude=39.7508006&longitude=-104.9965947')
+    .then(response => {
+      expect(response.statusCode).toBe(200)
+      expect(response.body.businesses.length).toBe(10)
+      expect(Object.keys(response.body.businesses[0])).toContain('id')
+      expect(Object.keys(response.body.businesses[0])).toContain('name')
+    })
+  })
 });

@@ -4,7 +4,6 @@ var app = require('../app');
 var shell = require('shelljs');
 var request = require('supertest');
 var cleanup = require('./helper/testCleanup');
-var Location = require("../models").Location
 
 describe('Search', () => {
   beforeEach(() => {

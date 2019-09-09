@@ -16,4 +16,12 @@ router.get('/', async function(req, res) {
   }
 });
 
+router.post('/', async function(req, res) {
+  try {
+    User.findOne(req.params.p)
+  } catch {
+    
+  }
+})
+
 module.exports = router;

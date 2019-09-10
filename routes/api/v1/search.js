@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var Location = require('../../../models').Location;
-const fetch = require('node-fetch')
 var Sequelize = require('sequelize')
 var Op = Sequelize.Op
+var Location = require('../../../models').Location;
+var Serializer = require('../serializers/yelpToLocationSerializer.js');
+var express = require('express');
+const fetch = require('node-fetch')
 var defaultHeader = ["Content-Type", "application/json"]
+var router = express.Router();
 require('dotenv').config();
 
 router.get('/recommendations_search', async function(req, res) {
@@ -64,5 +65,7 @@ router.get('/yelp_search', async function(req, res) {
     }
   }
 );
+
+
 
 module.exports = router;

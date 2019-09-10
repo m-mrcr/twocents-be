@@ -1,14 +1,13 @@
 var express = require('express');
-var router = express.Router();
 const fetch = require('node-fetch')
 var crypto = require('crypto')
+var defaultHeader = ["Content-Type", "application/json"]
+var router = express.Router();
+require('dotenv').config();
 var User = require('../../../models').User;
 var Location = require('../../../models').Location;
-var UserLocation = require('../../../models').UserLocation;
 var Sequelize = require('sequelize')
 var Op = Sequelize.Op
-var defaultHeader = ["Content-Type", "application/json"]
-require('dotenv').config();
 
 router.get('/login', async function(req, res) {
   var encryptedKey = encrypt(req.query.p)
@@ -55,6 +54,5 @@ function encrypt(input) {
                    .update(input)
                    .digest('hex')
 };
-
 
 module.exports = router;

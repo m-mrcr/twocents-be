@@ -1,39 +1,39 @@
 class YelpToLocationSerializer {
-
-  locationSerializer(yelp) {
+  locationSerializer(business) {
     let location = {
-      name: yelp.name,
-      image: yelp.image_url,
-      url: yelp.url,
-      phone: yelp.display_phone,
-      rating: yelp.rating,
-      reviewCount: yelp.review_count,
-      categories: this.serializeCategories(yelp.categories),
-      coordinates: this.serializeCoordinates(yelp.coordinates),
-      location: this.serializeLocation(yelp.location),
-      hours: this.serializeHours(yelp.hours),
-      price: yelp.price,
-      yelpId: yelp.id
+      name: business.name,
+      image: business.image_url,
+      url: business.url,
+      phone: business.display_phone,
+      rating: business.rating,
+      reviewCount: business.review_count,
+      categories: this.serializeCategories(business.categories),
+      coordinates: this.serializeCoordinates(business.coordinates),
+      location: this.serializeLocation(business.location),
+      hours: this.serializeHours(business.hours),
+      price: business.price,
+      yelpId: business.id
     }
     return location
   }
 
   truncatedLocationSerializer(yelp) {
-    // console.log(yelp)
-    let location = {
-      name: yelp.name,
-      image: yelp.image_url,
-      url: yelp.url,
-      phone: yelp.display_phone,
-      rating: yelp.rating,
-      reviewCount: yelp.review_count,
-      categories: this.serializeCategories(yelp.categories),
-      coordinates: this.serializeCoordinates(yelp.coordinates),
-      location: this.serializeLocation(yelp.location),
-      price: yelp.price,
-      yelpId: yelp.id,
-    }
-    return location
+    return yelp.businesses.map(business => {
+      let location = {
+        name: business.name,
+        image: business.image_url,
+        url: business.url,
+        phone: business.display_phone,
+        rating: business.rating,
+        reviewCount: business.review_count,
+        categories: this.serializeCategories(business.categories),
+        coordinates: this.serializeCoordinates(business.coordinates),
+        location: this.serializeLocation(business.location),
+        price: business.price,
+        yelpId: business.id
+      }
+      return location
+    })
   }
 
   serializeCategories(yelpCategories) {
@@ -57,7 +57,6 @@ class YelpToLocationSerializer {
       return `${day.start}-${day.end}`
     })
   }
-
 };
 
 module.exports = YelpToLocationSerializer

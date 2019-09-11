@@ -103,7 +103,7 @@ describe('YelpToLocationSerializer', () => {
     expect(Object.keys(businesses[0])).toContain('coordinates')
   })
 
-  fit('converts Yelp request response to Location format - WITH HOURS', async () => {
+  it('converts Yelp request response to Location format - WITH HOURS', async () => {
     let business = await serializer.locationSerializer(
       {
         "id": "wmGPi9TKAkWbiWzIhE2U9g",

@@ -32,20 +32,12 @@ router.get('/login', async function(req, res) {
 router.get('/signup', async function(req, res) {
   var encryptedKey = encrypt(req.query.p)
   try {
-    let user = await User.findOrCreate({ where: { key: encryptedKey },
-      include: [
-        {
-          model: Location,
-          as: 'locations',
-          through: { attributes: [] },
-        },
-      ],
-    });
-    res.setHeader(...defaultHeader);
-    res.status(200).send(JSON.stringify(user));
+    let user = await User.findOrCreate({ where: { key: encryptedKey }});
+      res.setHeader(...defaultHeader);
+      res.status(200).send(JSON.stringify(user[0]));
   } catch (error) {
-    res.setHeader(...defaultHeader);
-    res.status(500).send({ error })
+      res.setHeader(...defaultHeader);
+      res.status(500).send({ error })
   }
 });
 

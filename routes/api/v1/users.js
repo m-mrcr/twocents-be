@@ -29,15 +29,25 @@ router.get('/login', async function(req, res) {
   }
 });
 
-router.get('/signup', async function(req, res) {
-  var encryptedKey = encrypt(req.query.p)
+router.post('/signup', async function(req, res) {
+  var encryptedKey = await encrypt(req.query.p)
+
   try {
-    let user = await User.findOrCreate({ where: { key: encryptedKey }});
-      res.setHeader(...defaultHeader);
-      res.status(200).send(JSON.stringify(user[0]));
+    let user = await User.findOne({where: {key: encryptedKey}})
+    if(user) {
+      console.log("USER EXISTS")
+  //     throw 'User already exists'
+    } else {
+      let newUser = await User.findOrCreate({where: {key: encryptedKey}})
+    }
+    res.setHeader(...defaultHeader);
+    res.status(201).send(JSON.stringify(newUser));
   } catch (error) {
+    console.log("DFUDFUDKFUDFJ")
+  //     // let error = "error"
       res.setHeader(...defaultHeader);
-      res.status(500).send({ error })
+      res.status(537).send({ error })
+  //     console.log(error)
   }
 });
 

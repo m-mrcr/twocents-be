@@ -42,24 +42,6 @@ router.post('/signup', async function(req, res) {
       res.status(500).send({ error });
     });
 });
-  // try {
-  //   let user = await User.findOne({where: {key: encryptedKey}})
-  //   if(user) {
-  //     console.log("USER EXISTS")
-  // //     throw 'User already exists'
-  //   } else {
-  //     let newUser = await User.findOrCreate({where: {key: encryptedKey}})
-  //   }
-  //   res.setHeader(...defaultHeader);
-  //   res.status(201).send(JSON.stringify(newUser));
-  // } catch (error) {
-  //   console.log("DFUDFUDKFUDFJ")
-  // //     // let error = "error"
-  //     res.setHeader(...defaultHeader);
-  //     res.status(537).send({ error })
-  // //     console.log(error)
-  // }
-// });
 
 function encrypt(input) {
   return crypto.createHmac('sha256', process.env.APP_SECRET)

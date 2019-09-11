@@ -26,7 +26,6 @@ describe('Recommendations', () => {
     return await request(app)
     .post('/api/v1/users/recommendations/44a4e0cd5616b584e6727171016f37bc943d456cb4d4f4f94ca3ff8def77da64?yelpId=UeIXzDWs8YLusMDYElJuSQ')
     .then(response => {
-      console.log(response)
       expect(response.statusCode).toBe(201)
       // expect(Object.keys(response.body[0])).toContain('name')
       // expect(Object.keys(response.body[0])).toContain('url')

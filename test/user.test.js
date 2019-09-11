@@ -14,7 +14,6 @@ describe('User', () => {
     return await request(app)
     .get('/api/v1/users/login?p=108443533200110515478')
     .then(response => {
-      console.log(response.body)
       expect(response.statusCode).toBe(200)
       expect(Object.keys(response.body)).toContain('id')
       expect(Object.keys(response.body)).toContain('key')
@@ -38,7 +37,6 @@ describe('User', () => {
     return await request(app)
     .post('/api/v1/users/signup?p=108443533200110515478')
     .then(response => {
-      console.log(response.body)
       expect(response.statusCode).toBe(201)
       expect(Object.keys(response.body)).toContain('id')
       expect(Object.keys(response.body)).toContain('key')

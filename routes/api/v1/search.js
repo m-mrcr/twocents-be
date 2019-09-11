@@ -13,13 +13,7 @@ router.get('/recommendations_search', async function(req, res) {
   var query = req.query.q
   res.setHeader(...defaultHeader);
   try {
-    let locations = await Location.findAll({
-      where: {
-        name: {
-          [Op.iLike]: `%${query}%`
-        }
-      }
-    });
+    let locations = await Location.findAll({where: {name: {[Op.iLike]: `%${query}%`}}});
     res.status(200).send(JSON.stringify(locations, ['id', 'name']));
   } catch (error) {
     res.status(500).send({ error })

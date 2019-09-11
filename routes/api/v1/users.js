@@ -29,15 +29,20 @@ router.get('/login', async function(req, res) {
   }
 });
 
-router.get('/signup', async function(req, res) {
-  var encryptedKey = encrypt(req.query.p)
-  try {
-    let user = await User.findOrCreate({ where: { key: encryptedKey }});
-      res.setHeader(...defaultHeader);
-      res.status(200).send(JSON.stringify(user[0]));
-  } catch (error) {
-      res.setHeader(...defaultHeader);
-      res.status(500).send({ error })
+router.post('/signup', async function(req, res) {
+  var encryptedKey = await encrypt(req.query.p)
+  res.setHeader(...defaultHeader);
+  let user = await User.findOne({where: {key: encryptedKey}})
+  if(user) {
+    res.status(409).send();
+  } else {
+    User.create({key: encryptedKey})
+      .then(user => {
+          res.status(201).send(JSON.stringify(user));
+      })
+      .catch(error => {
+        res.status(500).send({ error });
+      });
   }
 });
 

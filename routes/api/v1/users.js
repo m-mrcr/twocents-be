@@ -32,13 +32,18 @@ router.get('/login', async function(req, res) {
 router.post('/signup', async function(req, res) {
   var encryptedKey = await encrypt(req.query.p)
   res.setHeader(...defaultHeader);
-  User.create({key: encryptedKey})
-    .then(user => {
-        res.status(201).send(JSON.stringify(user));
-    })
-    .catch(error => {
-      res.status(500).send({ error });
-    });
+  let user = await User.findOne({where: {key: encryptedKey}})
+  if(user) {
+    res.status(409).send();
+  } else {
+    User.create({key: encryptedKey})
+      .then(user => {
+          res.status(201).send(JSON.stringify(user));
+      })
+      .catch(error => {
+        res.status(500).send({ error });
+      });
+  }
 });
 
 function encrypt(input) {

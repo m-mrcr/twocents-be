@@ -10,7 +10,7 @@ describe('User', () => {
     await cleanup()
   });
 
-  fit('GET request for user login', async () => {
+  it('GET request for user login', async () => {
     return await request(app)
     .get('/api/v1/users/login?p=108443533200110515478')
     .then(response => {
@@ -23,7 +23,7 @@ describe('User', () => {
     })
   });
 
-  fit('POST request for user sign-up', async () => {
+  it('POST request for user sign-up', async () => {
     return await request(app)
     .post('/api/v1/users/signup?p=112826686791851952769')
     .then(response => {

@@ -23,7 +23,7 @@ describe('User', () => {
     })
   });
 
-  it('POST request for user sign-up', async () => {
+  fit('POST request for user sign-up', async () => {
     return await request(app)
     .post('/api/v1/users/signup?p=112826686791851952769')
     .then(response => {

@@ -31,10 +31,8 @@ router.get('/login', async function(req, res) {
 
 router.post('/signup', async function(req, res) {
   var encryptedKey = await encrypt(req.query.p)
-  res.setHeader('Content-Type', 'application/json');
-  User.create({
-    key: encryptedKey,
-  })
+  res.setHeader(...defaultHeader);
+  User.create({key: encryptedKey})
     .then(user => {
         res.status(201).send(JSON.stringify(user));
     })

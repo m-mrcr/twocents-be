@@ -27,9 +27,9 @@ describe('Search', () => {
     .get('/api/v1/search/yelp_search?term=coffee&location=80202')
     .then(response => {
       expect(response.statusCode).toBe(200)
-      expect(response.body.businesses.length).toBe(10)
-      expect(Object.keys(response.body.businesses[0])).toContain('id')
-      expect(Object.keys(response.body.businesses[0])).toContain('name')
+      expect(response.body.length).toBe(10)
+      expect(Object.keys(response.body[0])).toContain('yelpId')
+      expect(Object.keys(response.body[0])).toContain('name')
     })
   })
 
@@ -38,20 +38,19 @@ describe('Search', () => {
     .get('/api/v1/search/yelp_search?term=coffee&latitude=39.7508006&longitude=-104.9965947')
     .then(response => {
       expect(response.statusCode).toBe(200)
-      expect(response.body.businesses.length).toBe(10)
-      expect(Object.keys(response.body.businesses[0])).toContain('id')
-      expect(Object.keys(response.body.businesses[0])).toContain('name')
+      expect(response.body.length).toBe(10)
+      expect(Object.keys(response.body[0])).toContain('yelpId')
+      expect(Object.keys(response.body[0])).toContain('name')
     })
   })
 
   it('GET request for single yelp search result', () => {
     return request(app)
-    .get('/api/v1/search/yelp_search?term=coffee&latitude=39.7508006&longitude=-104.9965947')
+    .get('/api/v1/search/yelp_business?yelpId=wmGPi9TKAkWbiWzIhE2U9g')
     .then(response => {
       expect(response.statusCode).toBe(200)
-      expect(response.body.businesses.length).toBe(10)
-      expect(Object.keys(response.body.businesses[0])).toContain('id')
-      expect(Object.keys(response.body.businesses[0])).toContain('name')
+      expect(Object.keys(response.body)).toContain('name')
+      expect(Object.keys(response.body)).toContain('hours')
     })
   })
 });

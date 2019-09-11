@@ -6,14 +6,15 @@ var request = require('supertest');
 var cleanup = require('./helper/testCleanup');
 
 describe('Search', () => {
-  beforeEach(() => {
-    cleanup()
+  beforeEach(async () => {
+    await cleanup()
   });
 
-  it('GET request for all locations formatted for search page', () => {
-    return request(app)
+  it('GET request for all locations formatted for search page', async () => {
+    return await request(app)
     .get('/api/v1/search/recommendations_search?q=coffee')
     .then(response => {
+      console.log(response)
       expect(response.statusCode).toBe(200)
       expect(response.body[0].id).toEqual(1)
       expect(response.body[0].name).toBe('Little Owl Coffee')
@@ -22,8 +23,8 @@ describe('Search', () => {
     })
   })
 
-  it('GET request for all yelp search results formatted for search page - LOCATION', () => {
-    return request(app)
+  it('GET request for all yelp search results formatted for search page - LOCATION', async () => {
+    return await request(app)
     .get('/api/v1/search/yelp_search?term=coffee&location=80202')
     .then(response => {
       expect(response.statusCode).toBe(200)
@@ -33,8 +34,8 @@ describe('Search', () => {
     })
   })
 
-  it('GET request for all yelp search results formatted for search page - LAT/LONG', () => {
-    return request(app)
+  it('GET request for all yelp search results formatted for search page - LAT/LONG', async () => {
+    return await request(app)
     .get('/api/v1/search/yelp_search?term=coffee&latitude=39.7508006&longitude=-104.9965947')
     .then(response => {
       expect(response.statusCode).toBe(200)
@@ -44,8 +45,8 @@ describe('Search', () => {
     })
   })
 
-  it('GET request for single yelp search result', () => {
-    return request(app)
+  it('GET request for single yelp search result', async () => {
+    return await request(app)
     .get('/api/v1/search/yelp_business?yelpId=wmGPi9TKAkWbiWzIhE2U9g')
     .then(response => {
       expect(response.statusCode).toBe(200)

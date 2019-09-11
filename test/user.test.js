@@ -38,7 +38,6 @@ describe('User', () => {
     .post('/api/v1/users/signup?p=108443533200110515478')
     .then(response => {
       expect(response.statusCode).toBe(409)
-      console.log(response)
     })
   });
 

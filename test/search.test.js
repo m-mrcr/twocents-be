@@ -14,7 +14,6 @@ describe('Search', () => {
     return await request(app)
     .get('/api/v1/search/recommendations_search?q=coffee')
     .then(response => {
-      console.log(response)
       expect(response.statusCode).toBe(200)
       expect(response.body[0].id).toEqual(1)
       expect(response.body[0].name).toBe('Little Owl Coffee')

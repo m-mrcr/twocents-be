@@ -20,7 +20,7 @@ router.get('/:id', async function(req, res) {
       ],
     });
     res.setHeader(...defaultHeader);
-    res.status(201).send(JSON.stringify(user.locations));
+    res.status(200).send(JSON.stringify(user.locations));
   } catch (error) {
     res.setHeader(...defaultHeader);
     res.status(500).send({ error })

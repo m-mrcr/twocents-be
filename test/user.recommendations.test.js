@@ -17,7 +17,6 @@ describe('Recommendations', () => {
     .get('/api/v1/users/recommendations/44a4e0cd5616b584e6727171016f37bc943d456cb4d4f4f94ca3ff8def77da64')
     .then(response => {
       expect(response.statusCode).toBe(200)
-      console.log(Object.keys(response.body.locations[0]))
       expect(Object.keys(response.body.locations[0])).toContain('name')
       expect(Object.keys(response.body.locations[0])).toContain('url')
       expect(Object.keys(response.body.locations[0])).toContain('hours')

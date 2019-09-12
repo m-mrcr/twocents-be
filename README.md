@@ -1,4 +1,4 @@
-# Om-Nom-Edamam
+# TwoCents
 
 The _TwoCents-BE_ API represents the back-end component of the Cross Pollination group project, which itself is a component of the fourth module of the Back-End Engineering program at the Turing School of Software and Design. The API uses backend JavaScript technologies (NodeJS and Express) to interface with a front-end built in React Native.
 

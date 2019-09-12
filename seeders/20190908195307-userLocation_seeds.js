@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('UserLocations', [
       {
-        id: 1,
+        id: 1000000,
         userId: 1000000,
         locationId: 1000000,
         notes: "This place is great! Martin told me about it! Tiny cappuccinos.",
@@ -12,7 +12,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 2,
+        id: 2000000,
         userId: 1000000,
         locationId: 3000000,
         notes: "This place rocks! Kyle's buddies and I went here one late morning and the pancakes were magical. ",
@@ -20,7 +20,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 3,
+        id: 3000000,
         userId: 1000000,
         locationId: 2000000,
         notes: "TACOS",
@@ -28,7 +28,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 4,
+        id: 4000000,
         userId: 1000000,
         locationId: 4000000,
         notes: "Kyle's buddies love the staff here. Great people.",
@@ -36,7 +36,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 5,
+        id: 5000000,
         userId: 2000000,
         locationId: 5000000,
         notes: "Generally excellent coffee, and knowledgable staff.",
@@ -44,7 +44,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 6,
+        id: 6000000,
         userId: 2000000,
         locationId: 1000000,
         notes: "Tiny place",
@@ -52,7 +52,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 7,
+        id: 7000000,
         userId: 2000000,
         locationId: 2000000,
         notes: "TACOS",
@@ -60,7 +60,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 8,
+        id: 8000000,
         userId: 2000000,
         locationId: 3000000,
         notes: "There's nothing wrong with a good 2am stop for some flapjacks. I hear this place is great.",
@@ -68,7 +68,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 9,
+        id: 9000000,
         userId: 2000000,
         locationId: 4000000,
         notes: "The bombshell sandwich is apparently the best.",
@@ -76,7 +76,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 10,
+        id: 10000000,
         userId: 1000000,
         locationId: 5000000,
         notes: "Great area for people watching. ;)",

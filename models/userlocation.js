@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     notes: DataTypes.TEXT
   }, {});
   UserLocation.associate = function(models) {
-    UserLocation.belongsTo(models.User);
-    UserLocation.belongsTo(models.Location);
+    UserLocation.belongsTo(models.User, { foreignKey: 'userId' });
+    UserLocation.belongsTo(models.Location, {foreignKey: 'locationId' });
   };
   return UserLocation;
 };

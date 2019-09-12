@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Locations', [
       {
-        id: 1,
+        id: 1000000,
         name: "Little Owl Coffee",
         image: "https://s3-media4.fl.yelpcdn.com/bphoto/L14MabdxIQPvzwNpVzPXPQ/o.jpg",
         url: "https://www.yelp.com/biz/little-owl-coffee-denver?adjust_creative=SFrK1QyyPZbVwjh2vOWSjw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=SFrK1QyyPZbVwjh2vOWSjw",
@@ -39,7 +39,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 2,
+        id: 2000000,
         name: "Tacos Tequila Whiskey",
         image: "https://s3-media2.fl.yelpcdn.com/bphoto/2tCtqQ01nknaOfFEH4W9DA/o.jpg",
         url: "https://www.yelp.com/biz/tacos-tequila-whiskey-denver-2?adjust_creative=SFrK1QyyPZbVwjh2vOWSjw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=SFrK1QyyPZbVwjh2vOWSjw",
@@ -73,7 +73,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 3,
+        id: 3000000,
         name: "IHOP",
         image: "https://s3-media2.fl.yelpcdn.com/bphoto/7PWw0gAaPPwHIaH9PdjArQ/o.jpg",
         url: "https://www.yelp.com/biz/ihop-denver?adjust_creative=SFrK1QyyPZbVwjh2vOWSjw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=SFrK1QyyPZbVwjh2vOWSjw",
@@ -108,7 +108,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 4,
+        id: 4000000,
         name: "Highland Tavern",
         image: "https://s3-media4.fl.yelpcdn.com/bphoto/wUTo1kzYprBZekjQb3rDxQ/o.jpg",
         url: "https://www.yelp.com/biz/highland-tavern-denver?adjust_creative=SFrK1QyyPZbVwjh2vOWSjw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=SFrK1QyyPZbVwjh2vOWSjw",
@@ -142,7 +142,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 5,
+        id: 5000000,
         name: "Crema Coffee House",
         image: "https://s3-media1.fl.yelpcdn.com/bphoto/X3fUAFy1liKGObQ3tDL6zQ/o.jpg",
         url: "https://www.yelp.com/biz/crema-coffee-house-denver-2?adjust_creative=6IQ69FnHUmPOvoU64q9Xgw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=6IQ69FnHUmPOvoU64q9Xgw",
@@ -178,7 +178,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 6,
+        id: 6000000,
         name: "Novo Coffee",
         image: "https://s3-media1.fl.yelpcdn.com/bphoto/53U_7LVynqaOMhzxfglU7g/o.jpg",
         url: "https://www.yelp.com/biz/novo-coffee-denver-2?adjust_creative=6IQ69FnHUmPOvoU64q9Xgw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6IQ69FnHUmPOvoU64q9Xgw",
@@ -211,7 +211,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 7,
+        id: 7000000,
         name: "Huckleberry Roasters at Dairy Block",
         image: "https://s3-media4.fl.yelpcdn.com/bphoto/5D4jaXjYMvjXgqBohSbtUA/o.jpg",
         url: "https://www.yelp.com/biz/huckleberry-roasters-at-dairy-block-denver?adjust_creative=6IQ69FnHUmPOvoU64q9Xgw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6IQ69FnHUmPOvoU64q9Xgw",
@@ -245,7 +245,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 8,
+        id: 8000000,
         name: "Serendipity Coffee Bar",
         image: "https://s3-media1.fl.yelpcdn.com/bphoto/lbgG-QNJGCNinzAiUBYUlw/o.jpg",
         url: "https://www.yelp.com/biz/serendipity-coffee-bar-denver?adjust_creative=6IQ69FnHUmPOvoU64q9Xgw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6IQ69FnHUmPOvoU64q9Xgw",
@@ -279,7 +279,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        id: 9,
+        id: 9000000,
         name: "Sapor Coffee & Concepts",
         image: "https://s3-media1.fl.yelpcdn.com/bphoto/_a4qootZNkU46ICcIInTBA/o.jpg",
         url: "https://www.yelp.com/biz/sapor-coffee-and-concepts-denver?adjust_creative=6IQ69FnHUmPOvoU64q9Xgw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=6IQ69FnHUmPOvoU64q9Xgw",

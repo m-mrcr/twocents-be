@@ -71,12 +71,18 @@ router.post("/:id", async function (req, res) {
   }
 });
 
-// router.delete('/:id', async function(req, res) {
-//   try {
-//     User.findOne({where: {key: req.params.id}})
-//   } catch {
-//
-//   }
-// })
+router.delete('/:id', async function(req, res) {
+  try {
+    let user = await User.findOne({where: {key: req.params.id}})
+    let location = await Location.findOne({where: {yelpId: req.query.yelpId}})
+    let userLocation = await UserLocation.findOne({where: {userId: user.id, locationId: location.id}});
+    await userLocation.destroy();
+    res.setHeader(...defaultHeader);
+    res.status(204).send();
+  } catch (error) {
+    res.setHeader(...defaultHeader);
+    res.status(404).send({error})
+  }
+});
 
 module.exports = router;

@@ -28,22 +28,33 @@ describe('Recommendations', () => {
     let userKey = '44a4e0cd5616b584e6727171016f37bc943d456cb4d4f4f94ca3ff8def77da64'
     let yelpId = 'heaStxibj5y6IIuwuXeNSA'
 
-    let response = await request(app).post(`/api/v1/users/recommendations/${userKey}?yelpId=${yelpId}`)
+    let response = await request(app)
+    .post(`/api/v1/users/recommendations/${userKey}?yelpId=${yelpId}`)
     expect(response.status).toBe(201)
     expect(Object.keys(response.body)).toContain('id')
     expect(Object.keys(response.body)).toContain('userId')
     expect(Object.keys(response.body)).toContain('locationId')
   });
 
-  it("POST request to create a user recommendation with location not in database", async () => {
+  it("POST request to create a user recommendation with location not yet in database", async () => {
     let userKey = '44a4e0cd5616b584e6727171016f37bc943d456cb4d4f4f94ca3ff8def77da64'
     let yelpId = "3qGNUG1rT8piRNczCuCrXg"
 
-    let response = await request(app).post(`/api/v1/users/recommendations/${userKey}?yelpId=${yelpId}`)
+    let response = await request(app)
+    .post(`/api/v1/users/recommendations/${userKey}?yelpId=${yelpId}`)
     expect(response.status).toBe(201)
     expect(Object.keys(response.body)).toContain('id')
     expect(Object.keys(response.body)).toContain('userId')
     expect(Object.keys(response.body)).toContain('locationId')
   });
+
+  it("DELETE request to remove a user recommendation from the database", async () => {
+    let userKey = '44a4e0cd5616b584e6727171016f37bc943d456cb4d4f4f94ca3ff8def77da64'
+    let yelpId = 'heaStxibj5y6IIuwuXeNSA'
+
+    let response = await request(app).delete(`/api/v1/users/recommendations/${userKey}?yelpId=${yelpId}`)
+
+    expect(response.status).toBe(204)
+  })
 
 })
